@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">LeitorDeRSS</string>
+    <string name="instagram">Instagram</string>
+    <string name="textview">TextView</string>
+    <string name="instagram_inc">Instagram, Inc</string>
+    <string name="_2019_10_11">2019-10-11</string>
 </resources>

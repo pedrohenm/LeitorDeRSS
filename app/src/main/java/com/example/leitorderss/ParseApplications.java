@@ -66,11 +66,10 @@ public class ParseApplications {
                                 entry.setSummary(textValue);
                             }else if ("image".equalsIgnoreCase(tag)){ //</image>
                                 entry.setImgUrl(textValue);
-                            }else if ("releasDate".equalsIgnoreCase(tag)){ //</releaseDate>
+                            }else if ("releaseDate".equalsIgnoreCase(tag)){ //</releaseDate>
                                 entry.setReleaseDate(textValue);
                             }
                             break;
-
                         }
                 }
                 eventType = pullParser.next();

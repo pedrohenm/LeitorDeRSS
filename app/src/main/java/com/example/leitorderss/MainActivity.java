@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,11 +19,18 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-    
+
+    private ListView rssListView;
+    private TextView txtNome;
+    private TextView txtAutor;
+    private TextView txtSumario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        rssListView = findViewById(R.id.rssListView);
 
         Log.d(TAG, "onCreate: iniciando a AsyncTask!");
         DownloadData downloadData = new DownloadData();
@@ -41,6 +51,14 @@ public class MainActivity extends AppCompatActivity {
 
             ParseApplications parser = new ParseApplications();
             parser.parse(s);
+
+            FeedImageAdapter feedAdapter = new FeedImageAdapter(
+                    MainActivity.this,
+                    R.layout.list_records_image,
+                    parser.getApplications()
+            );
+
+            rssListView.setAdapter(feedAdapter);
         }
 
         @Override
